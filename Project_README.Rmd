@@ -11,8 +11,8 @@ Start
 1. to begin visualizing my data I first imput my data into vectors. stringsAsFactors because if not the data will be factored, not characters, and I specified "," so that is would make my table look nice, otherwise would make a mess. I set all missing data to NA, which I will switch back before making my files
 
 ```
-fang <- read.table("fang_et_al_genotypes.txt", header = TRUE, sep=",", na.strings = "?/?", stringsAsFactors = FALSE)
-snps <- read.table("snp_position.txt",  header=TRUE, sep=",", na.strings = "?/?", stringsAsFactors = FALSE)
+fang <- read.table("fang_et_al_genotypes.txt", header = TRUE, sep="\t", na.strings = "?/?", stringsAsFactors = FALSE)
+snps <- read.table("snp_position.txt",  header=TRUE, sep="\t", na.strings = "?/?", stringsAsFactors = FALSE)
 ```
 I then took a good look at the data with the following comand str() and veiwing in both top windows, The environment tab showed me number of Observations and variables. I veiwed the type of data I was looking at with my courser by running it on the headers.
 
@@ -45,7 +45,7 @@ After viewing the data there was a supprise like Dennis mentioned, all character
 
 ```
 t_maize_NOFACTORS <- as.data.frame(t_maize_genotypes_all, stringsAsFactors = FALSE)
-t_teosinte_NOFACTORS <- as.data.frame(trans_teosinte, stringsAsFactors = FALSE)
+t_teosinte_NOFACTORS <- as.data.frame(t_teosinte_genotypes_all, stringsAsFactors = FALSE)
 ```
 Above I just set the factors into characters, now all data is in characters, in a data frame
 
@@ -94,6 +94,40 @@ snp_teosinte_questionmarks$Position <- as.numeric(as.character(snp_teosinte_ques
 teosinte_questionmarks_arranged <- arrange(snp_teosinte_questionmarks, Position)
 
 teosinte_questionmarks_arranged$Position <- as.character(as.numeric(teosinte_questionmarks_arranged$Position))
+
+
+
+
+snp_teosinte_questionmarks$Position <- as.numeric(as.character(snp_teosinte_questionmarks$Position))
+
+teosinte_questionmarks_arranged <- arrange(snp_teosinte_questionmarks, desc(Position))
+
+teosinte_questionmarks_arranged$Position <- as.character(as.numeric(teosinte_questionmarks_arranged$Position))
+
+
+
+
+snp_maize_questionmarks$Position <- as.numeric(as.character(snp_maize_questionmarks$Position))
+
+maize_questionmarks_arranged <- arrange(snp_maize_questionmarks, Position)
+
+maize_questionmarks_arranged$Position <- as.character(as.numeric(maize_questionmarks_arranged$Position))
+
+
+
+snp_maize_questionmarks$Position <- as.numeric(as.character(snp_maize_questionmarks$Position))
+
+maize_questionmarks_arranged <- arrange(snp_maize_questionmarks, desc(Position))
+
+maize_questionmarks_arranged$Position <- as.character(as.numeric(maize_questionmarks_arranged$Position))
+
+
+
+
+
+
+
+
 ```
 
 
@@ -234,7 +268,7 @@ maize_melted_table <-as.data.frame(table(maize_melted$Chromosome))
 teosinte_melted_table <-as.data.frame(table(teosinte_melted$Chromosome))
 
 
-ggplot(maize_melted_table)+geom_col(aes(x= Var1, y=Freq))
+ggplot(maize_melted_table)+geom_col(aes(x=Var1, y=Freq))
 ggplot(teosinte_melted_table)+geom_col(aes(x=Var1, y=Freq))
 
 
@@ -253,6 +287,8 @@ teosinte_melted_table <-as.data.frame(table(teosinte_melted$Chromosome))
 ggplot(maize_melted_table)+geom_col(aes(x= Var1, y=Freq))
 ggplot(teosinte_melted_table)+geom_col(aes(x=Var1, y=Freq))
 
+
+###graph Broke me I have no I idea, and after the 30+ hours I spent on this I hope that it won't hurt me so badly
 
 ```
 
