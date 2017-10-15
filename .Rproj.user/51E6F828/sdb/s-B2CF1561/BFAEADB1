@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1508088534009.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BFAEADB1",
+    "lastKnownWriteTime" : 18577743607234671,
+    "last_content_update" : 1508088534009,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "141B3959",
+        "caption" : "melted_maize",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=melted_maize&cache_key=141B3959",
+        "displayedObservations" : 983,
+        "environment" : "",
+        "object" : "melted_maize",
+        "preview" : 0,
+        "totalObservations" : 983,
+        "variables" : 1576
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
