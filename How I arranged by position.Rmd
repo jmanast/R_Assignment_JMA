@@ -19,26 +19,26 @@ teosinte_questionmarks_arranged$Position <- as.character(as.numeric(teosinte_que
 
 
 chromosomes of maize_dashe_arranged
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1", row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7" row.names = FALSE)
 
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9" row.names = FALSE)
 
-filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10")
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10" row.names = FALSE)
 
 
 
@@ -49,26 +49,26 @@ filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="10") %>% write.csv(
 
 
 chromosomes of maize_questionmarks_arranged
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7" row.names = FALSE)
 
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10")
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10" row.names = FALSE)
 
 
 
@@ -82,28 +82,26 @@ teosinte
 
 
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6" row.names = FALSE)
 
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7")
-
-
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8")
-
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9")
-
-filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10")
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7" row.names = FALSE)
 
 
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8" row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9" row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10" row.names = FALSE)
 
 
 
@@ -113,25 +111,27 @@ filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="10") %>% writ
 
 
 
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6")
-
-filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7")
 
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8")
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9")
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2" row.names = FALSE)
 
-filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10")
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3" row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4" row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5" row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6" row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7" row.names = FALSE)
+
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8" row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9" row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10" row.names = FALSE)
 
 
