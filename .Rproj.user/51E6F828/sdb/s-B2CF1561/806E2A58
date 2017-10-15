@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1508102269674.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "806E2A58",
+    "lastKnownWriteTime" : 18577743607234671,
+    "last_content_update" : 1508102269674,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "54AAEA63",
+        "caption" : "teosinte_melted",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=teosinte_melted&cache_key=54AAEA63",
+        "displayedObservations" : 983,
+        "environment" : "",
+        "object" : "teosinte_melted",
+        "preview" : 0,
+        "totalObservations" : 983,
+        "variables" : 978
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

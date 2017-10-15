@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1508102273793.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "788F5332",
+    "lastKnownWriteTime" : 18577743607234671,
+    "last_content_update" : 1508102273793,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "BA01EEF3",
+        "caption" : "teosinte_melted_table",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=teosinte_melted_table&cache_key=BA01EEF3",
+        "displayedObservations" : "12",
+        "environment" : "",
+        "object" : "teosinte_melted_table",
+        "preview" : "0",
+        "totalObservations" : "12",
+        "variables" : "2"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
