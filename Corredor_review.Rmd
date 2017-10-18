@@ -1,0 +1,317 @@
+---
+title: "Project_README"
+output: html_notebook
+---
+
+
+Start
+
+##Data Inspection ##
+
+1. to begin visualizing my data I first imput my data into vectors. stringsAsFactors because if not the data will be factored, not characters, and I specified "," so that is would make my table look nice, otherwise would make a mess. I set all missing data to NA, which I will switch back before making my files
+
+```
+fang <- read.table("fang_et_al_genotypes.txt", header = TRUE, sep="\t", na.strings = "?/?", stringsAsFactors = FALSE)
+snps <- read.table("snp_position.txt",  header=TRUE, sep="\t", na.strings = "?/?", stringsAsFactors = FALSE)
+```
+*Corredor comment=nice job!*
+
+I then took a good look at the data with the following comand str() and veiwing in both top windows, The environment tab showed me number of Observations and variables. I veiwed the type of data I was looking at with my courser by running it on the headers.
+
+```
+str(fang)
+str(snps)
+
+```
+*Corredor comment= I think you could also have used the nrow() and ncol() functions or dim(). However, I could agree that dimension information is already visible on the Global environment *
+
+I would then use the courser over my tables to check if elements matched, collumns were in order. I also would verify with my environment window to make sure observations and variables were not changed when not wanted
+
+##DATA Play Time ##
+
+```
+
+maize_genotypes_all <-filter(fang, fang$Group=="ZMMIL"| fang$Group=="ZMMLR" | fang$Group=="ZMMMR")
+
+teosinte_genotypes_all <-filter(fang, fang$Group=="ZMPBA"| fang$Group=="ZMPIL" | fang$Group=="ZMPJA")
+
+```
+*Corredor_comment= that is prety good! I made the same thing on my script =)*
+
+above I used the filter command to find all groups for teosinte and maize and to put them each in their coresponding vector
+
+
+Next step is to transpose the data
+```
+t_maize_genotypes_all <- t(maize_genotypes_all)
+t_teosinte_genotypes_all <- t(teosinte_genotypes_all)
+```
+After viewing the data there was a supprise like Dennis mentioned, all characters where switched to factors. 
+
+```
+t_maize_NOFACTORS <- as.data.frame(t_maize_genotypes_all, stringsAsFactors = FALSE)
+t_teosinte_NOFACTORS <- as.data.frame(t_teosinte_genotypes_all, stringsAsFactors = FALSE)
+```
+Above I just set the factors into characters, now all data is in characters, in a data frame
+
+
+```
+snp_maize <- merge(snps, t_maize_NOFACTORS, by.x=1, by.y=0)
+snp_teosinte <- merge(snps, t_teosinte_NOFACTORS, by.x=1, by.y=0)
+```
+At the point above I am indicating a merge betweent the two dataframes snps and either of the processed file
+
+Next I got rid of all columns besides, first column is "SNP_ID", the second column is "Chromosome", the third column is "Position", and subsequent columns are genotype data from either maize or teosinte individuals, Mathew had me cut out the uneeded one last time so bellow is my processing to show only these three columns and then following genotype data. I made files at this point just incase haha.
+```
+snp_teosinte[1] <- NULL
+snp_teosinte[2] <- NULL
+snp_teosinte[4:11] <- NULL
+snp_teosinte[4] <- NULL
+snp_teosinte[5:6] <- NULL
+snp_teosinte[4] <- NULL
+snp_maize[5:15] <- NULL
+snp_maize[2] <- NULL
+write.csv(snp_teosinte,file = "cutcolumns_snp_teosinte.csv")
+write.csv(snp_maize,file = "cutcolumns_snp_maize.csv")
+
+```
+
+*Corredor_comment= I don't have run your script. I am sorry, I really don't understand this part =/*
+
+```
+snp_maize_questionmarks <- replace(snp_maize, is.na(snp_maize), "?")
+snp_maize_dash <- replace(snp_maize, is.na(snp_maize), "-")
+
+snp_teosinte_questionmarks <- replace(snp_teosinte, is.na(snp_teosinte), "?")
+snp_teosinte_dash <- replace(snp_teosinte, is.na(snp_teosinte), "-")
+
+
+```
+
+*Corredor_comment= clever choice!*
+
+Above I have switched <NA> for missing data to either a ?, or -
+
+
+
+
+Next I arranged based off of posistion, but since they are all characters and I want to order based of increasing and decreasing numbers, I must change them to be read as numeric. I then arranged based of posistion column, and lastely changed the data back to characters. This step was repeated for maize. For the dashes, you want descending values so where posisition is do this ```desc(Posistion)``` this will reverse the order.
+```
+snp_teosinte_questionmarks$Position <- as.numeric(as.character(snp_teosinte_questionmarks$Position))
+
+teosinte_questionmarks_arranged <- arrange(snp_teosinte_questionmarks, Position)
+
+teosinte_questionmarks_arranged$Position <- as.character(as.numeric(teosinte_questionmarks_arranged$Position))
+
+
+
+
+snp_teosinte_questionmarks$Position <- as.numeric(as.character(snp_teosinte_questionmarks$Position))
+
+teosinte_questionmarks_arranged <- arrange(snp_teosinte_questionmarks, desc(Position))
+
+teosinte_questionmarks_arranged$Position <- as.character(as.numeric(teosinte_questionmarks_arranged$Position))
+
+
+
+
+snp_maize_questionmarks$Position <- as.numeric(as.character(snp_maize_questionmarks$Position))
+
+maize_questionmarks_arranged <- arrange(snp_maize_questionmarks, Position)
+
+maize_questionmarks_arranged$Position <- as.character(as.numeric(maize_questionmarks_arranged$Position))
+
+
+
+snp_maize_questionmarks$Position <- as.numeric(as.character(snp_maize_questionmarks$Position))
+
+maize_questionmarks_arranged <- arrange(snp_maize_questionmarks, desc(Position))
+
+maize_questionmarks_arranged$Position <- as.character(as.numeric(maize_questionmarks_arranged$Position))
+
+
+
+
+
+
+
+
+```
+
+
+Lastely for the data manipulation I chose this long route, I know there are alternatives with lapply, but I did this before I knew about that and it worked. This is taking each chromosome and extracting every row that has that number in the column, and writing it into a csv for that respective chromosome. Row names are set to false because when you open the csv the first row will be counted as the row name from the dataframe. So now I was able 
+
+```
+chromosomes of maize_dashe_arranged
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9", row.names = FALSE)
+
+filter(maize_dash_arranged, maize_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10", row.names = FALSE)
+```
+
+*Corredor_comment= Yeah, I think something like this could have make the work:*
+```
+for (i in 1:10){
+  maize_files<-incmaize[incmaize$Chromosome==i,]
+  write.csv(maize_files,sprintf("increasing_Chr_%d_maize",i),row.names = F)
+}
+```
+*Corredor_comment= Anyway, you make things done!*
+
+
+
+
+```
+chromosomes of maize_questionmarks_arranged
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9", row.names = FALSE)
+
+filter(maize_questionmarks_arranged, maize_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10", row.names = FALSE)
+
+
+
+
+
+
+
+
+
+teosinte
+
+
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="1") %>% write.csv(file = "chr1", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="2") %>% write.csv(file = "chr2", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="3") %>% write.csv(file = "chr3", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="4") %>% write.csv(file = "chr4", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="5") %>% write.csv(file = "chr5", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="6") %>% write.csv(file = "chr6", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="7") %>% write.csv(file = "chr7", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="8") %>% write.csv(file = "chr8", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="9") %>% write.csv(file = "chr9", row.names = FALSE)
+
+filter(teosinte_dash_arranged, teosinte_dash_arranged$Chromosome=="10") %>% write.csv(file = "chr10", row.names = FALSE)
+
+
+
+
+
+
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="1") %>% write.csv(file = "chr1", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="2") %>% write.csv(file = "chr2", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="3") %>% write.csv(file = "chr3", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="4") %>% write.csv(file = "chr4", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="5") %>% write.csv(file = "chr5", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="6") %>% write.csv(file = "chr6", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="7") %>% write.csv(file = "chr7", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="8") %>% write.csv(file = "chr8", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="9") %>% write.csv(file = "chr9", row.names = FALSE)
+
+filter(teosinte_questionmarks_arranged, teosinte_questionmarks_arranged$Chromosome=="10") %>% write.csv(file = "chr10", row.names = FALSE)
+
+
+```
+
+##Now to Graphing##
+
+
+
+
+
+Graph 1:SNPs per chromosome
+
+Plot the total number of SNPs in our dataset on each chromosome. What groups contribute most of these SNPs? Chromosome 1. First I melted my  data set and then made it so that datasets column, Chromosome would be put in a table and read as a data frame. I then plotted with ggplot2, Var1 = chromosome number. 
+. 
+```
+maize_melted <- melt(snp_maize_dash)
+teosinte_melted <- melt(snp_teosinte_dash)
+
+maize_melted <- melt(snp_maize_dash)
+teosinte_melted <- melt(snp_teosinte_dash)
+
+maize_melted_table <-as.data.frame(table(maize_melted$Chromosome))
+
+
+teosinte_melted_table <-as.data.frame(table(teosinte_melted$Chromosome))
+
+
+ggplot(maize_melted_table)+geom_col(aes(x=Var1, y=Freq))
+ggplot(teosinte_melted_table)+geom_col(aes(x=Var1, y=Freq))
+
+
+
+
+
+
+```
+
+maize_melted_table <-as.data.frame(table(maize_melted$Chromosome))
+
+
+teosinte_melted_table <-as.data.frame(table(teosinte_melted$Chromosome))
+
+
+ggplot(maize_melted_table)+geom_col(aes(x= Var1, y=Freq))
+ggplot(teosinte_melted_table)+geom_col(aes(x=Var1, y=Freq))
+
+
+###graph Broke me I have no I idea, and after the 30+ hours I spent on this I hope that it won't hurt me so badly
+
+```
+
+my personal graph to make:
+```
+ggplot(maize_dash_arranged)+geom_point(aes(x=SNP_ID, y=Chromosome))
+```
+```
+*Corredor_comment= Yeah, graphics were a nightmare. But we did it! *
+
+
+*=)*
